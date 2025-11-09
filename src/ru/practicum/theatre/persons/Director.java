@@ -16,6 +16,6 @@ public class Director extends Person {
 
     @Override
     public String toString() {
-        return name + " " + surname + " (поставлено спектаклей: " + numberOfShows + ")";
+        return super.toString() + " (поставлено спектаклей: " + numberOfShows + ")";
     }
 }

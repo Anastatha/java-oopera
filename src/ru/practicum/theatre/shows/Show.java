@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Show {
     protected String title;
-    private int duration;
-    private Director director;
-    private List<Actor> listOfActors;
+    protected int duration;
+    protected Director director;
+    protected List<Actor> listOfActors;
 
     public Show(String title, int duration, Director director) {
         this.title = title;
@@ -43,14 +43,32 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String surnameToReplace) {
+        if (listOfActors.contains(newActor)) {
+            System.out.println("Актёр " + newActor + " уже участвует в спектакле");
+            return;
+        }
+
+        int replacementsCount = 0;
+        List<Actor> replacedActors = new ArrayList<>();
+
         for (int i = 0; i < listOfActors.size(); i++) {
             Actor currentActor = listOfActors.get(i);
             if (currentActor.getSurname().equals(surnameToReplace)) {
+                replacedActors.add(currentActor);
                 listOfActors.set(i, newActor);
-                System.out.println("Актёр " + currentActor + " заменён на " + newActor + " в спектакле");
-                return;
+                replacementsCount++;
             }
         }
-        System.out.println("Актёр с фамилией '" + surnameToReplace + "' не найден в спектакле");
+
+        if (replacementsCount > 0) {
+            if (replacementsCount == 1) {
+                System.out.println("В спектакле заменён актёр с фамилией " + surnameToReplace);
+            } else {
+                System.out.println("В спектакле заменено " + replacementsCount +
+                        " актёров с фамилией " + surnameToReplace);
+            }
+        } else {
+            System.out.println("Актёр с фамилией " + surnameToReplace + " не найден в спектакле '" + title + "'");
+        }
     }
 }

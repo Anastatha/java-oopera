@@ -12,6 +12,7 @@ public class Theatre {
         Actor actor1 = new Actor("Максим", "Орлов", Gender.MALE, 180);
         Actor actor2 = new Actor("Алексей", "Захаров", Gender.MALE, 170);
         Actor actor3 = new Actor("Анастасия", "Орлова", Gender.FEMALE, 160);
+        Actor actor4 = new Actor("Анастасия2", "Орлова2", Gender.FEMALE, 160);
 
         Director director1 = new Director("Сергей", "Васильев", Gender.MALE, 10);
         Director director2 = new Director("Мария", "Сизова", Gender.FEMALE, 5);
@@ -47,7 +48,7 @@ public class Theatre {
         // заменяем актёра
         System.out.println("Замена актеров:");
         ballet.replaceActor(actor2, "Орлов");
-        ballet.replaceActor(actor2, "Пет"); // заменить несуществующего
+        ballet.replaceActor(actor4, "Пет"); // заменить несуществующего
         System.out.println();
 
         System.out.println("Список актеров после замены:");
